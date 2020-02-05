@@ -7,6 +7,9 @@
 
 <div class="courses">
   <div class="course-card">
-    <course-card [course]="angularCore"></course-card>
+    <course-card
+      [course]="angularCore"
+      (click)="courseButtonInApp()"
+    ></course-card>
   </div>
 </div>
