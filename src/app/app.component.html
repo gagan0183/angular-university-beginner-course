@@ -8,8 +8,15 @@
 <div class="courses">
   <div class="course-card">
     <course-card
-      [course]="angularCore"
+      *ngFor="let course of courses; index as i; first as isFirst; last as isLast; even as isEven; odd as isOdd"
+      [class.is-first]="isFirst"
+      [class.is-last]="isLast"
+      [class.is-even]="isEven"
+      [class.is-odd]="isOdd"
+      [index]="i + 1"
+      [course]="course"
       (courseSelected)="onCourseSelected($event)"
-    ></course-card>
+    >
+    </course-card>
   </div>
 </div>
