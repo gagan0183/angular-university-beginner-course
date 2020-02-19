@@ -1,19 +1,18 @@
-<div class="course-title">
-  {{index + ' ' + course.description }}
+<div class="course-card" [ngClass]="cardClass()">
+  <div class="course-title">
+    {{index + ' ' + course.description }}
+  </div>
+  <img
+    width="300"
+    alt="Angular Logo"
+    *ngIf="course.iconUrl; else noImage"
+    [src]="course.iconUrl"
+  />
+  <ng-template #noImage>
+    <p>Image unavailable</p>
+  </ng-template>
+  <div class="course-description">
+    {{ course.longDescription }}
+  </div>
+  <button (click)="courseClicked()">View Course</button>
 </div>
-<img
-  width="300"
-  alt="Angular Logo"
-  *ngIf="course.iconUrl; else noImage"
-  [src]="course.iconUrl"
-/>
-
-<ng-template #noImage>
-  <p>Image unavailable</p>
-</ng-template>
-
-<div class="course-description">
-  {{ course.longDescription }}
-</div>
-
-<button (click)="courseClicked()">View Course</button>
