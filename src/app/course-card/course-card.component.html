@@ -14,5 +14,10 @@
   <div class="course-description">
     {{ course.longDescription }}
   </div>
+  <div class="course-category" [ngSwitch]="course.category">
+    <div *ngSwitchCase="'BEGINNER'">Beginner</div>
+    <div *ngSwitchCase="'INTERMEDIATE'">Intermediate</div>
+    <div *ngSwitchCase="'ADVANCED'">Advanced</div>
+  </div>
   <button (click)="courseClicked()">View Course</button>
 </div>
