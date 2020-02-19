@@ -21,6 +21,12 @@ export class CourseCardComponent implements OnInit {
     };
   }
 
+  cardStyle() {
+    return {
+      "text-decoration": "underline"
+    };
+  }
+
   courseClicked() {
     console.log("course button click");
     this.courseSelected.emit(this.course);

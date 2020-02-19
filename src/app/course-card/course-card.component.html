@@ -1,5 +1,5 @@
 <div class="course-card" [ngClass]="cardClass()">
-  <div class="course-title">
+  <div class="course-title" [ngStyle]="cardStyle()">
     {{index + ' ' + course.description }}
   </div>
   <img
