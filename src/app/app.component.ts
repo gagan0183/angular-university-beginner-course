@@ -20,15 +20,13 @@ import { HttpClient, HttpParams } from "@angular/common/http";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  courses;
+  courses$: Observable<Course[]>;
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit() {
     const params = new HttpParams();
     params.set("page", "1");
     params.set("pageSize", "10");
-    this.httpClient
-      .get("/api/courses", { params })
-      .subscribe(courses => (this.courses = courses));
+    this.courses$ = this.httpClient.get<Course[]>("/api/courses", { params });
   }
 }
