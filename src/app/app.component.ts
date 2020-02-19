@@ -1,32 +1,20 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  QueryList,
-  ViewChild,
-  ViewChildren
-} from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { COURSES } from "../db-data";
 import { Course } from "./model/course";
 import { CourseCardComponent } from "./course-card/course-card.component";
-import { HighlightedDirective } from "./directives/highlighted.directive";
-import { Observable } from "rxjs";
-import { HttpClient, HttpParams } from "@angular/common/http";
-
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent implements OnInit {
-  courses$: Observable<Course[]>;
-  constructor(private httpClient: HttpClient) {}
+export class AppComponent {
+  courses = COURSES;
 
-  ngOnInit() {
-    const params = new HttpParams();
-    params.set("page", "1");
-    params.set("pageSize", "10");
-    this.courses$ = this.httpClient.get<Course[]>("/api/courses", { params });
+  @ViewChild(CourseCardComponent, { static: false })
+  courseCard: CourseCardComponent;
+
+  onCourseSelected(course) {
+    console.log("course in app");
+    console.log(this.courseCard);
   }
 }
