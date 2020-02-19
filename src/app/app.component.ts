@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, ViewChild, ElementRef } from "@angular/core";
 import { COURSES } from "../db-data";
 import { Course } from "./model/course";
 import { CourseCardComponent } from "./course-card/course-card.component";
@@ -13,8 +13,13 @@ export class AppComponent {
   @ViewChild(CourseCardComponent, { static: false })
   courseCard: CourseCardComponent;
 
+  @ViewChild("coursesElem", { static: false })
+  coursesElem: ElementRef;
+
+  @ViewChild(CourseCardComponent, { read: ElementRef, static: false })
+  courseCardElem: ElementRef;
+
   onCourseSelected(course) {
-    console.log("course in app");
-    console.log(this.courseCard);
+    console.log("elem", this.courseCardElem);
   }
 }
